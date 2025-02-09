@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: "Times New Roman";
+            text-align: center;
+            background-color: #e6ccff;
+            position: relative;
+            overflow: hidden;
+        }
+        button {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #a64dff;
+            color: white;
+            border-radius: 50%;
+            font-family: "Times New Roman", serif;
+        }
+        #noButton {
+            position: absolute;
+        }
+        .heart {
+            position: absolute;
+            color: #a64dff;
+            font-size: 24px;
+            animation: float 3s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+        img {
+            max-width: 300px;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h2>Will you be my Valentine, Ally ko? 💖</h2>
+    <button id="yesButton">❤️ Yes</button>
+    <button id="noButton">💜 No</button>
+    
+    <script>
+        document.getElementById("yesButton").addEventListener("click", function() {
+            document.body.innerHTML = "<h2>Yeheyyy!! Happy na si Lian:> I love you so muchie, Babyyy!! ❤️</h2>";
+            let img = document.createElement("img");
+            img.src = "ally.jpg";
+            document.body.appendChild(img);
+        });
+
+        document.getElementById("noButton").addEventListener("mouseover", function() {
+            let x = Math.random() * window.innerWidth - 50;
+            let y = Math.random() * window.innerHeight - 50;
+            this.style.left = `${x}px`;
+            this.style.top = `${y}px`;
+        });
+        
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💜";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = Math.random() * window.innerHeight + "px";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 3000);
+        }
+        
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
